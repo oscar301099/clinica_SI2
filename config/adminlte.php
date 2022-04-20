@@ -266,6 +266,12 @@ return [
             'can' =>'GestionarPerfil',
         ],
         [
+            'text' => 'medico',
+            'route'  => 'medico.index',
+            'icon' => 'fas fa-fw fa-lock',
+            
+        ],
+        [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
