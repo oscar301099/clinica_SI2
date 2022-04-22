@@ -15,10 +15,6 @@ class MedicoSeeder extends Seeder
     public function run()
     {
         //
-        $medico=new Medico() ;
-        $medico->name='medico';
-        $medico->email='medico@gmail.com';
-        $medico->password=bcrypt('12345678');
-        $medico->save();//save con  parentesis
+      
     }
 }

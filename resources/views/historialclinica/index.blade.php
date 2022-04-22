@@ -3,13 +3,13 @@
 @section('title', 'clinica Si2')
 
 @section('content_header')
-    <h1>Medicos</h1>
+    <h1>historial clinico</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{route('medico.create')}}" class="btn btn-primary btn-sm">Crear medico</a>
+            <a href="{{route('historiaclinica.create')}}" class="btn btn-secondary btb-sm">Crear historia clinica<</a>
         </div>
     </div>
     <div class="card">
@@ -17,27 +17,33 @@
             <table class="table table-striped" id="roles" style="width:100%">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre de Medico</th>
-                        <th scope="col">celular</th>
-                        <th scope="col">correo</th>
-                    </tr>
+                        <th scope="col">id</th>
+                        <th scope="col">actividad</th>
+                        <th scope="col">alergias</th>
+                        <th scope="col">Fecha deingreso</th>
+                        <th scope="col">Fecha de salida</th>
+                        <th scope="col">enfermedad</th>
+                        <th scope="col">medicamentos</th>
+                                       </tr>
                 </thead>
     
                 <tbody>
-                    @foreach ($medico as $medico)
+                    @foreach ($historiaclinicas as $historiaclinica)
                         <tr>
-                            <td>{{$medico->id}}</td>
-                            <td>{{$medico->nombre}}</td>  
-                            <td>{{$medico->celular}}</td>      
-                            <td>{{$medico->email}}</td>                         
+                            <td>{{$historiaclinica->id}}</td>
+                            <td>{{$historiaclinica->actividad}}</td>  
+                            <td>{{$historiaclinica->alergias}}</td>      
+                            <td>{{$historiaclinica->Fecha_ingreso}}</td>   
+                            <td>{{$historiaclinica->Fecha_salida}}</td>  
+                            <td>{{$historiaclinica->enfermedad}}</td>  
+                            <td>{{$historiaclinica->medicamentos}}</td>                        
                             <td >
-                              
-                                <form action="{{ route('medico.index', $medico)}}" method="post">
+                            
+                                <form action="{{url('/historiaclinica/'.$historiaclinica->id)}}" method="post">
                                     @csrf
                                     @method('delete')
                                     
-                                    <a href="{{route('medico.edit', $medico)}}"  class="btn btn-primary btn-sm">Editar</a>
+                                    <a href="{{route('historiaclinica.edit', $historiaclinica)}}"  class="btn btn-primary btn-sm">Editar</a>
                                     
                                     @can('Editar medico')
                                     @endcan

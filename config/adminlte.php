@@ -272,6 +272,12 @@ return [
             
         ],
         [
+           'text' => 'historial Clinico',
+            'route'  => 'historiaclinica.index',
+           'icon' => 'fas fa-fw fa-lock',
+            
+        ],
+        [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [

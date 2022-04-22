@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{route('roles.create')}}" class="btn btn-secondary btb-sm">Crear Rol</a>
+            <a href="{{route('roles.create')}}" class="btn btn-primary btn-sm">Crear Rol</a>
         </div>
     </div>
     <div class="card">
@@ -39,7 +39,7 @@
                                     @can('Editar rol')
                                     @endcan
                                     <div style="padding-top: 0.50rem"></div>
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" value="Borrar">Eliminar</button>                                    
+                                    <button class="btn btn-primary btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" value="Borrar">Eliminar</button>                                    
                                     @can('Eliminar rol')
                                     @endcan
                                 </form>

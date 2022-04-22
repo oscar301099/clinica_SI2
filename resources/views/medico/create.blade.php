@@ -21,8 +21,6 @@
                 <div class="form-row">
                      <div class="form-group col-md-6">
                         <label for="nombre">ingresar nombre medico</label>
-                        
-                        
                         <input type="text" name="nombre" class="form-control"  value="{{old('nombre')}}" id="nombre" required>
                         <label for="email">ingresar email del  medico</label>
                         <input type="text" name="email" class="form-control"  value="{{old('email')}}" id="email" required>

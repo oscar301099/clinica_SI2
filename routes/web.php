@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\historiaclinica;
 use App\Http\Controllers\MedicoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\roleController;
@@ -27,4 +28,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('roles', roleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
 Route::resource('medico', MedicoController::class)->names('medico');
+Route::resource('historiaclinica', historiaclinica::class)->names('historiaclinica');
 

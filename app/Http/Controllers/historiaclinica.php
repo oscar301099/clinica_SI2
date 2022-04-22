@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Medico;
 use App\Models\User;
+use App\Models\historialclinico;
 use Illuminate\Http\Request;
 
-class MedicoController extends Controller
+class historiaclinica extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,9 @@ class MedicoController extends Controller
     public function index()
     {
         //
-        $medico = Medico::all();
-        return view('medico.index',['medico'=>$medico]);
+        $historiaclinicas= historialclinico::all();
+        return view('historialclinica.index',compact('historiaclinicas'));
+        
     }
 
     /**
@@ -28,7 +29,8 @@ class MedicoController extends Controller
     public function create()
     {
         //
-        return view('medico.create');
+        return view('historialclinica.create');
+        
     }
 
     /**
@@ -40,24 +42,19 @@ class MedicoController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'nombre' => 'required'
-        ]);
-        $medico=new Medico();
-        $medico->nombre=$request->input('nombre');
-        $medico->email=$request->input('email');
-        $medico->celular=$request->input('celular'); 
-        $medico->password = bcrypt($request->input('password') );
-    
-        $medico->save();
-        $usuario = new User();
-        $usuario->name =$medico->nombre;
-        $usuario->email = $medico->email;
-        $usuario->password = bcrypt($request->input('password') );
-        $usuario->assignRole('Medico');
-        $usuario->save();
-        return redirect()->route('medico.index');
-}
+        $historiaclinica=new historialclinico();
+        $historiaclinica->actividad=$request->input('actividad');
+        $historiaclinica->alergias=$request->input('alergias');
+        $historiaclinica->Fecha_ingreso=$request->input('Fecha_ingreso'); 
+        $historiaclinica->Fecha_salida=$request->input('Fecha_salida'); 
+        $historiaclinica->enfermedad=$request->input('enfermedad'); 
+        $historiaclinica->medicamentos=$request->input('medicamentos'); 
+        $historiaclinica->Id_cliente=$request->input('Id_cliente');
+        $historiaclinica->Id_medico=$request->input('Id_medico'); 
+        $historiaclinica->save();
+        
+        return redirect()->route('historiaclinica.index');
+    }
 
     /**
      * Display the specified resource.
@@ -78,11 +75,8 @@ class MedicoController extends Controller
      */
     public function edit($id)
     {
-        //
-        $medico=Medico::findOrFail($id);
-        $usuario=User::findOrFail($id);
-        return view('medico.edit',['medico'=>$medico]);
-       
+        
+      //  $historiaclinica=historiaclinica::find($id);
     }
 
     /**
@@ -95,18 +89,6 @@ class MedicoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        
-        
-        $medico=Medico::findOrFail($id);
-        $usuario=User::findOrFail($id);
-        $medico->nombre=$request->input('nombre');
-        $medico->email=$request->input('email');
-        $medico->celular=$request->input('celular');
-        
-        $medico->save();
-        
-        return redirect()->route('medico.index');
-
     }
 
     /**
@@ -118,8 +100,5 @@ class MedicoController extends Controller
     public function destroy($id)
     {
         //
-        $medico=Medico::findOrFail($id);
-        $medico->delete();
-        return redirect()->route('medico.index');
     }
 }
