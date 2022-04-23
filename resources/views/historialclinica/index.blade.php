@@ -43,14 +43,13 @@
                                     @csrf
                                     @method('delete')
                                     
-                                    <a href="{{route('historiaclinica.edit', $historiaclinica)}}"  class="btn btn-primary btn-sm">Editar</a>
-                                    
-                                    @can('Editar medico')
-                                    @endcan
+                                    <a href="{{route('historiaclinica.edit', $historiaclinica->id)}}"  class="btn btn-primary btn-sm">Editar</a>
+                                   
+                                   
                                     <div style="padding-top: 0.50rem"></div>
                                     <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" value="Borrar">Eliminar</button>                                    
-                                    @can('Eliminar medico')
-                                    @endcan
+                                   
+                                    
                                 </form>
                             
                             </td>

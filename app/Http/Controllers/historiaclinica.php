@@ -75,7 +75,9 @@ class historiaclinica extends Controller
      */
     public function edit($id)
     {
-        
+       
+        $historiaclinica=historialclinico::findOrFail($id);
+        return view('historialclinica.edit',['historiaclinica'=>$historiaclinica]);
       //  $historiaclinica=historiaclinica::find($id);
     }
 
@@ -89,6 +91,18 @@ class historiaclinica extends Controller
     public function update(Request $request, $id)
     {
         //
+        $historiaclinica=historialclinico::findOrFail($id);
+        $historiaclinica->actividad=$request->input('actividad');
+        $historiaclinica->alergias=$request->input('alergias');
+        $historiaclinica->Fecha_ingreso=$request->input('Fecha_ingreso'); 
+        $historiaclinica->Fecha_salida=$request->input('Fecha_salida'); 
+        $historiaclinica->enfermedad=$request->input('enfermedad'); 
+        $historiaclinica->medicamentos=$request->input('medicamentos'); 
+        $historiaclinica->Id_cliente=$request->input('Id_cliente');
+        $historiaclinica->Id_medico=$request->input('Id_medico'); 
+        $historiaclinica->save();
+        
+        return redirect()->route('historiaclinica.index');
     }
 
     /**
@@ -100,5 +114,8 @@ class historiaclinica extends Controller
     public function destroy($id)
     {
         //
+        $historiaclinica=historialclinico::findOrFail($id);
+        $historiaclinica->delete();
+        return redirect()->route('historiaclinica.index');
     }
 }

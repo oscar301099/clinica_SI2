@@ -268,7 +268,7 @@ return [
         [
             'text' => 'medico',
             'route'  => 'medico.index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fa-solid fa-book-medical',
             
         ],
         [
@@ -277,6 +277,12 @@ return [
            'icon' => 'fas fa-fw fa-lock',
             
         ],
+        [
+            'text' => 'subir archivo',
+            'route'  => 'subir.index',
+            'icon' => 'fas fa-fw fa-lock',
+             
+         ],
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
