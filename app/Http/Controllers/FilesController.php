@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\file;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FilesController extends Controller
 {
@@ -38,8 +39,21 @@ class FilesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $maxsize=(int )ini_get('upload_max_filesize')*10240;
+       $files=$request->file('files');
+       dd($files);
+       $ID_User=Auth::id();
+       foreach($files as $file){
+        File::create([
+            'name'=>$file->getClientOriginalName(),
+            'ID_User'=>$ID_User
+        ]);
+       }
+       return "subido";
+     
+    
     }
+    
 
     /**
      * Display the specified resource.
@@ -73,7 +87,7 @@ class FilesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        dd("Upload");
+        dd('Upload');
     }
 
     /**
