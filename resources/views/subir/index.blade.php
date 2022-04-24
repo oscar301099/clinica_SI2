@@ -9,6 +9,7 @@
 @section('content')
     <div class="card">
        
+      {{-- <img src="{{asset("storage/0nQhj71pmRXnI8HwMvBZGtsez1nlX0BAHEKm0tkY.png")}}" alt="">--}}
     </div>
     <div class="card">
         <div class="card-body">
@@ -21,7 +22,7 @@
     
                 <tbody>
                
-                              
+                           
                                 
         <form method="POST" action="{{route('subir.index')}}" accept-charset="UTF-8" enctype="multipart/form-data">
             {{ csrf_field() }}

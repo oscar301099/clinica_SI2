@@ -27,7 +27,7 @@
                         <label for="celular">ingresar celular del medico</label>
                         <input type="text" name="celular" class="form-control"  value="{{old('celular')}}" id="celular" required>
                         <label for="password">ingresar password del medico</label>
-                        <input type="text" name="password" class="form-control"  value="{{old('password')}}" id="password" required>
+                        <input type="password" name="password" class="form-control"  value="{{old('password')}}" id="password" required>
                     </div>
 
                    

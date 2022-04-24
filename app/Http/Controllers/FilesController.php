@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\file;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class FilesController extends Controller
 {
@@ -39,19 +40,21 @@ class FilesController extends Controller
      */
     public function store(Request $request)
     {
-       $maxsize=(int )ini_get('upload_max_filesize')*10240;
-       $files=$request->file('files');
-       dd($files);
-       $ID_User=Auth::id();
-       foreach($files as $file){
-        File::create([
-            'name'=>$file->getClientOriginalName(),
-            'ID_User'=>$ID_User
-        ]);
-       }
-       return "subido";
-     
+    $path = $request->file('files')->store('public');
+    //$fileName = "miarchivo.pdf";  
+    //dd($path);
+    //$url = Storage::url($path);
+
+    $s=explode("/", $path);
     
+    $s[1];
+    //dd($s);
+
+     File::create([
+            'name'=>$s[1],
+           'ID_User'=> Auth::user()->id
+     ]);
+       
     }
     
 
