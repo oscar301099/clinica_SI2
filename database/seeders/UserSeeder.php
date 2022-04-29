@@ -21,7 +21,6 @@ class UserSeeder extends Seeder
         $user->password=bcrypt('12345678');
         $user->assignRole('Admin');//bcrypt encripta la contraseña 
         $user->save();//save con  parentesis
-     
         //
         $user=new User() ;
         $user->name='paciente';

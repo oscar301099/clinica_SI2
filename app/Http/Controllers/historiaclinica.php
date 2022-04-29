@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Bitacora;
 use App\Models\Medico;
 use App\Models\User;
 use App\Models\historialclinico;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class historiaclinica extends Controller
 {
@@ -16,6 +19,7 @@ class historiaclinica extends Controller
     public function index()
     {
         //
+
         $historiaclinicas= historialclinico::all();
         return view('historialclinica.index',compact('historiaclinicas'));
         
@@ -52,7 +56,10 @@ class historiaclinica extends Controller
         $historiaclinica->Id_cliente=$request->input('Id_cliente');
         $historiaclinica->Id_medico=$request->input('Id_medico'); 
         $historiaclinica->save();
-        
+        $bitacora=new Bitacora();
+        $bitacora->ID_User=Auth::user()->id;
+        $bitacora->Accion=('creo archivos');
+        $bitacora->save();
         return redirect()->route('historiaclinica.index');
     }
 
@@ -77,6 +84,11 @@ class historiaclinica extends Controller
     {
        
         $historiaclinica=historialclinico::findOrFail($id);
+      
+        $bitacora=new Bitacora();
+        $bitacora->ID_User=Auth::user()->id;
+        $bitacora->Accion=('edito historial');
+        $bitacora->save();
         return view('historialclinica.edit',['historiaclinica'=>$historiaclinica]);
       //  $historiaclinica=historiaclinica::find($id);
     }
@@ -88,7 +100,7 @@ class historiaclinica extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( $id,Request $request)
     {
         //
         $historiaclinica=historialclinico::findOrFail($id);
@@ -101,7 +113,10 @@ class historiaclinica extends Controller
         $historiaclinica->Id_cliente=$request->input('Id_cliente');
         $historiaclinica->Id_medico=$request->input('Id_medico'); 
         $historiaclinica->save();
-        
+        $bitacora=new Bitacora();
+        $bitacora->ID_User=Auth::user()->id;
+        $bitacora->Accion=('actualiz historial');
+        $bitacora->save();
         return redirect()->route('historiaclinica.index');
     }
 
@@ -116,6 +131,10 @@ class historiaclinica extends Controller
         //
         $historiaclinica=historialclinico::findOrFail($id);
         $historiaclinica->delete();
+        $bitacora=new Bitacora();
+        $bitacora->ID_User=Auth::user()->id;
+        $bitacora->Accion=('elimino historial');
+        $bitacora->save();
         return redirect()->route('historiaclinica.index');
     }
 }

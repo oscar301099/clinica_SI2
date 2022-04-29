@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\historiaclinica;
 use App\Http\Controllers\MedicoController;
 use Illuminate\Support\Facades\Route;
@@ -31,5 +32,6 @@ Route::resource('users', UserController::class)->names('users');
 Route::resource('medico', MedicoController::class)->names('medico');
 Route::resource('historiaclinica', historiaclinica::class)->names('historiaclinica');
 Route::resource('subir', FilesController::class)->names('subir');
+Route::resource('bitacora',BitacoraController::class)->names('bitacora');
 
 
