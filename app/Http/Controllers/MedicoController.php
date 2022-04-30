@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\especialidad;
 use App\Models\Medico;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,8 +17,9 @@ class MedicoController extends Controller
     public function index()
     {
         //
-        $medico = Medico::all();
-        return view('medico.index',['medico'=>$medico]);
+        $medicos = Medico::all();
+        $especialidades = especialidad::all();
+        return view('medico.index',compact('medicos','especialidades'));
     }
 
     /**
@@ -56,6 +58,13 @@ class MedicoController extends Controller
         $usuario->password = bcrypt($request->input('password') );
         $usuario->assignRole('Medico');
         $usuario->save();
+
+        $especialidades = new especialidad();
+        $especialidades->descripcion = $request->input('descripcion');
+        $especialidades->id_medico = $medico->id;
+        $especialidades->save();
+
+
         return redirect()->route('medico.index');
 }
 
@@ -80,7 +89,6 @@ class MedicoController extends Controller
     {
         //
         $medico=Medico::findOrFail($id);
-        $usuario=User::findOrFail($id);
         return view('medico.edit',['medico'=>$medico]);
        
     }
@@ -119,7 +127,27 @@ class MedicoController extends Controller
     {
         //
         $medico=Medico::findOrFail($id);
+        $especialidades=especialidad::where('id_medico',$medico->id);
+        $especialidades->delete();
         $medico->delete();
+        $user = User::where('cod_p', $medico->id);
+        $user->delete();
+
         return redirect()->route('medico.index');
+    }
+    public function especialidad($id)
+    {
+        $medico= Medico::findOrFail($id);
+        return view('medicos.especialidad',compact('medico'));
+    }
+    public function esp_store(Request $request)
+    {
+       $especialidades = new Especialidad();
+       $especialidades->descripcion = $request->input('descripcion');
+       $especialidades->id_medico = $request->input('id_medico');
+       $especialidades->save();
+
+       return redirect()->route('medicos.index');
+        
     }
 }

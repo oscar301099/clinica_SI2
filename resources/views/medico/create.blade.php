@@ -16,29 +16,30 @@
       </div>
          
         @enderror
+       
             <form action="{{route('medico.store')}}" method="post" >
                 @csrf
                 <div class="form-row">
                      <div class="form-group col-md-6">
+                    
                         <label for="nombre">ingresar nombre medico</label>
-                        <input type="text" name="nombre" class="form-control"  value="{{old('nombre')}}" id="nombre" required>
+                        <input type="text" name="nombre" class="form-control" >
                         <label for="email">ingresar email del  medico</label>
-                        <input type="text" name="email" class="form-control"  value="{{old('email')}}" id="email" required>
+                        <input type="text" name="email" class="form-control"  >
                         <label for="celular">ingresar celular del medico</label>
-                        <input type="text" name="celular" class="form-control"  value="{{old('celular')}}" id="celular" required>
+                        <input type="text" name="celular" class="form-control" >
                         <label for="password">ingresar password del medico</label>
-                        <input type="password" name="password" class="form-control"  value="{{old('password')}}" id="password" required>
+                        <input type="password" name="password" class="form-control" >
+                        <label for="descripcion">Ingresar Especialidad</label>
+                        <input type="text" name="descripcion" class="form-control"> 
                     </div>
 
-                   
-
-                    
                 
-           
-                    
+                
+    
                 </div>
                 <div class="form-group">
-                    <button  class="btn btn-primary" type="submit" value="required">Añadir medico</button>
+                    <button  class="btn btn-primary" type="submit" value="required">Añadir Medico</button>
                     <a class="btn btn-danger" href="{{route('medico.index')}}">Volver</a>
                 </div>
                 

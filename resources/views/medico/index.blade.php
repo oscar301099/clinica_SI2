@@ -14,42 +14,56 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <table class="table table-striped" id="roles" style="width:100%">
+            <table class="table table-striped" id="medico" style="width:100%">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nombre de Medico</th>
                         <th scope="col">celular</th>
                         <th scope="col">correo</th>
+                        <th scope="col">Especialidad</th>
+                        <th scope="col">descripcion</th>
+                       
                     </tr>
                 </thead>
     
                 <tbody>
-                    @foreach ($medico as $medico)
-                        <tr>
-                            <td>{{$medico->id}}</td>
-                            <td>{{$medico->nombre}}</td>  
-                            <td>{{$medico->celular}}</td>      
-                            <td>{{$medico->email}}</td>                         
-                            <td >
-                              
-                                <form action="{{ route('medico.index', $medico)}}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    
-                                    <a href="{{route('medico.edit', $medico)}}"  class="btn btn-primary btn-sm">Editar</a>
-                                    
-                                    @can('Editar medico')
-                                    @endcan
-                                    <div style="padding-top: 0.50rem"></div>
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" value="Borrar">Eliminar</button>                                    
-                                    @can('Eliminar medico')
-                                    @endcan
-                                </form>
+                    @foreach ($medicos as $medico)
+                    <tr>
+                        <td>{{$medico->id}}</td>
+                        <td>{{$medico->nombre}}</td>
+                        <td>{{$medico->email}}</td>
+                        <td>{{$medico->celular}}</td>
+    
+                        <td>
+                        @foreach ($especialidades as $especialidad)
+                            @if ($medico->id = $especialidad->id_medico)
+                           *{{$especialidad->descripcion}} <br>
+                            @endif
+                        @endforeach
+                        </td>
+    
+                        <td>
                             
-                            </td>
+                            <a href="{{ url('medicos/especialidad', $medico->id) }}" style="margin-top: 0.35rem" class="btn btn-warning"><i class="fas fa-plus-square"></i> Especialidad</a>
+    
+                            <a class="btn btn-primary btn-sm" style="margin-top: 5px" href="{{route('medico.edit',$medico)}}"><i class="fas fa-pencil-alt"></i>  Editar</a>  
                             
-                        </tr>
+                            
+                            
+                            <form action="{{route('medico.destroy',$medico)}}" method="POST">
+                                @csrf
+                                @method('delete')
+                               
+                                <button class="btn btn-danger btn-sm" style="margin-top: 0.35rem" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" value="Borrar"><i class="fas fa-trash"></i>  Eliminar</button>
+                               
+                                
+                            </form>
+    
+                            
+    
+                        </td>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>
