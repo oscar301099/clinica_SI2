@@ -62,8 +62,7 @@ class FilesController extends Controller
      ]);
      $bitacora=new Bitacora();
      $usuario=User::findOrFail($id);
-     $bitacora->ID_User=$usuario->id;
-     $bitacora->Accion=('subio archivos');
+
        
     }
     
@@ -117,7 +116,7 @@ class FilesController extends Controller
  {
         //Recibimos el archivo y lo guardamos en la carpeta storage/app/public
         $request->file('archivo')->store('public');
-        dd("subido y guardado");
+       // dd("subido y guardado");
         
  }
 

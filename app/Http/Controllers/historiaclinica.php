@@ -116,7 +116,7 @@ class historiaclinica extends Controller
         $historiaclinica->save();
         $bitacora=new Bitacora();
         $bitacora->ID_User=Auth::user()->id;
-        $bitacora->Accion=('actualiz historial');
+        $bitacora->Accion=('actualizo historial');
         $bitacora->save();
         return redirect()->route('historiaclinica.index');
     }
