@@ -19,9 +19,9 @@ class historiaclinica extends Controller
     public function index()
     {
         //
-
-        $historiaclinicas= historialclinico::all();
-        return view('historialclinica.index',compact('historiaclinicas'));
+        
+        $historiaclinicas= historialclinico::where('Id_cliente',Auth::user()->id )->orWhere('Id_cliente',Auth::user()->id )->get();
+        return view('historialclinica.index',compact('historiaclinicas',$historiaclinicas));
         
     }
 
@@ -58,7 +58,7 @@ class historiaclinica extends Controller
         $historiaclinica->save();
         $bitacora=new Bitacora();
         $bitacora->ID_User=Auth::user()->id;
-        $bitacora->Accion=('creo archivos');
+        $bitacora->Accion=('creo historia');
         $bitacora->save();
         return redirect()->route('historiaclinica.index');
     }
@@ -72,6 +72,7 @@ class historiaclinica extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -134,7 +135,7 @@ class historiaclinica extends Controller
         $bitacora=new Bitacora();
         $bitacora->ID_User=Auth::user()->id;
         $bitacora->Accion=('elimino historial');
-        $bitacora->save();
+        
         return redirect()->route('historiaclinica.index');
     }
 }

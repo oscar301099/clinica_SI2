@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
@@ -14,6 +15,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function login(Request $request)
+    {
+        // dd(User::find(1));
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('home');
+        }
+
+        return back()->withErrors([
+            'error' => 'Por favor verifique sus credenciales!!',
+        ]);
+    }
     public function index()
     {
         //

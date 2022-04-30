@@ -19,13 +19,10 @@ class FilesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
         //
-        $bitacora=new Bitacora();
-        $usuario=User::findOrFail($id);
-        $bitacora->ID_User=$usuario->id;
-        $bitacora->Accion=('ingreso a los archivos');
+       
         $files=File::all();
         return view('subir.index',compact('files'));
     }

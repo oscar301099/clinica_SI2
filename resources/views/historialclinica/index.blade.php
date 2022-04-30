@@ -28,8 +28,14 @@
                 </thead>
     
                 <tbody>
+                  
                     @foreach ($historiaclinicas as $historiaclinica)
+                    {{-- Id_cliente','Id_medico' ||$historiaclinica->Id_medico==auth()->user()->id
+                    {{auth()->user()->id]]}}
+                    --}}
                         <tr>
+                            {{-- //<div>auth()->user()->id==1</div> --}}
+                     
                             <td>{{$historiaclinica->id}}</td>
                             <td>{{$historiaclinica->actividad}}</td>  
                             <td>{{$historiaclinica->alergias}}</td>      
@@ -53,9 +59,13 @@
                                 </form>
                             
                             </td>
+                         
+                            
                             
                         </tr>
                     @endforeach
+                   
+                   
                 </tbody>
             </table>
         </div>

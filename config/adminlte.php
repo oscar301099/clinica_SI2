@@ -253,13 +253,13 @@ return [
             'text' => 'Roles',
             'route'  => 'roles.index',
             'icon' => 'fas fa-fw fa-lock',
-            'can' =>'GestionarPerfil',
+            //'can' =>'GestionarPerfil',
         ],
         [
             'text' => 'usuarios',
             'route'  => 'users.index',
             'icon' => 'fas fa-fw fa-lock',
-            'can' =>'GestionarPerfil',
+            //'can' =>'GestionarPerfil',
         ],
         [
             'text' => 'medico',
@@ -274,14 +274,14 @@ return [
             
         ],
         [
-            'text' => 'subir archivo',
-            'route'  => 'subir.index',
+            'text' => 'bitacora',
+             'route'  => 'bitacora.index',
             'icon' => 'fas fa-fw fa-lock',
              
          ],
-         [
-            'text' => 'bitacora',
-            'route'  => 'bitacora.index',
+        [
+            'text' => 'subir archivo',
+            'route'  => 'subir.index',
             'icon' => 'fas fa-fw fa-lock',
              
          ],
