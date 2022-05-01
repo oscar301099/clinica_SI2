@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{route('historiaclinica.create')}}" class="btn btn-secondary btb-sm">Crear historia clinica<</a>
+            <a href="{{route('historiaclinica.create')}}" class="btn btn-secondary btb-sm">Crear historia clinica</a>
         </div>
     </div>
     <div class="card">
