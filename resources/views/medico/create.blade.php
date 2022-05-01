@@ -18,6 +18,7 @@
         @enderror
        
             <form action="{{route('medico.store')}}" method="post" >
+                @csrf
                 <div class="form-row">
                      <div class="form-group col-md-6">
                     

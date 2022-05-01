@@ -81,7 +81,7 @@ class UserController extends Controller
             $mecanicos->user_id = $usuario->id;
             $mecanicos->save();
         } */
-            // return $usuario;
+            return view('users.index');
             
     }
 
