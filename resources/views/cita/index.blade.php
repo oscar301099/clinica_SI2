@@ -9,6 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
+
             <a href="{{route('cita.create')}}" class="btn btn-secondary btb-sm">Crear cita clinica</a>
         </div>
     </div>
@@ -40,9 +41,14 @@
                                 <form action="{{url('/cita/'.$cita->id)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('cita.edit', $cita->id)}}"  class="btn btn-primary btn-sm">Editar</a>
+                                    @can('Rol Admin')
+                                    <a href="{{route('cita.edit', $cita->id)}}"  class="btn btn-primary btn-sm">Editar</a>    
+                                    @endcan
+                                    
                                     <div style="padding-top: 0.50rem"></div>
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" value="Borrar">Eliminar</button>                                    
+                                    @can('Rol Admin')
+                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" value="Borrar">Eliminar</button>  
+                                    @endcan                                  
                                 </form>
                             </td>
                             

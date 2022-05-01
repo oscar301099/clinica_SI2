@@ -8,9 +8,13 @@
 
 @section('content')
     <div class="card">
+        @can('Rol Admin')
         <div class="card-header">
-            <a href="{{route('medico.create')}}" class="btn btn-primary btn-sm">Crear medico</a>
+        <a href="{{route('medico.create')}}" class="btn btn-primary btn-sm">Crear medico</a>    
+        @endcan
+            
         </div>
+    
     </div>
     <div class="card">
         <div class="card-body">
@@ -46,17 +50,21 @@
                         <td>
                             
                             <a href="{{ url('medico/especialidad', $medico->id) }}" style="margin-top: 0.35rem" class="fas fa-pencil-alt"><i class="fas fa-plus-square"></i> Especialidad</a>
-    
-                            <a class="btn btn-primary btn-sm" style="margin-top: 5px" href="{{route('medico.edit',$medico)}}"><i class="fas fa-pencil-alt"></i>  Editar</a>  
-                            
+                                @can('Rol Admin')
+                                <a class="btn btn-primary btn-sm" style="margin-top: 5px" href="{{route('medico.edit',$medico)}}"><i class="fas fa-pencil-alt"></i>  Editar</a>  
+                                @endcan
+            
+                                <a class="btn btn-primary btn-sm" style="margin-top: 5px" href="{{route('cita.create')}}"><i class="fas fa-pencil-alt"></i>  solicitar</a>
+                              
+                              
                             
                             
                             <form action="{{route('medico.destroy',$medico)}}" method="POST">
                                 @csrf
                                 @method('delete')
-                               
+                                @can('Rol Admin')
                                 <button class="btn btn-danger btn-sm" style="margin-top: 0.35rem" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" value="Borrar"><i class="fas fa-trash"></i>  Eliminar</button>
-                               
+                                @endcan
                                 
                             </form>
     
