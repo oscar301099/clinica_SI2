@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\historialclinico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\Models\file;
 
 class historiaclinica extends Controller
 {
@@ -45,6 +47,11 @@ class historiaclinica extends Controller
      */
     public function store(Request $request)
     {
+        $path = Storage::disk('s3')->put('files', $request->file('files'),'public');
+        File::create([
+                'name'=>$path,
+              'ID_User'=> Auth::user()->id
+         ]);
         $historiaclinica=new historialclinico();
         $historiaclinica->actividad=$request->input('actividad');
         $historiaclinica->alergias=$request->input('alergias');

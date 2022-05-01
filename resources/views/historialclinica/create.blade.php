@@ -16,8 +16,9 @@
       </div>
          
         @enderror
-            <form action="{{route('historiaclinica.store')}}" method="post" >
+            <form action="{{route('historiaclinica.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
+              
                 <div class="form-row">
                      <div class="form-group col-md-6">
                       
@@ -37,12 +38,8 @@
                         <input type="text" name="Id_cliente" class="form-control"  id="Id_cliente" required>
                         <label for="password">ingresar ID del medico</label>
                         <input type="text" name="Id_medico" class="form-control"  id="Id_medico" required>
-                        <form method="POST" action="{{route('subir.index')}}" accept-charset="UTF-8" enctype="multipart/form-data">
-                            {{ csrf_field() }}
                             <label for="archivo"><b>Archivo: </b></label><br>
                             <input type="file" name="files" required>
-                            <input class="btn btn-success" type="submit" value="Enviar" >
-                        </form>
                        
                     </div>
 
