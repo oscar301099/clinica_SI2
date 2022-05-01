@@ -9,7 +9,9 @@
 @section('content')
     <div class="card">
        
-      {{-- <img src="{{asset("storage/0nQhj71pmRXnI8HwMvBZGtsez1nlX0BAHEKm0tkY.png")}}" alt="">--}}
+       {{--  <img src="{{Storage::disk('s3')->url('files/tfg8xYHFxo6NBvCw74yGdeEzb9yU1d2ZtmjKSvP4.png')}}" alt=""> 
+       este codigo muestra la imagen del s3
+       --}}
     </div>
     <div class="card">
         <div class="card-body">

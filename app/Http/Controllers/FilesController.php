@@ -46,27 +46,14 @@ class FilesController extends Controller
 
     public function store(Request $request )
     {
-      
-   $path = $request->file('files')->store('public');
-    $fileName = "miarchivo.pdf";  
-   // dd($path);
-    $url = Storage::url($path);
-   // dd($path);
-    $s=explode("/", $path);
-    
-    $s[1];
-   // dd($s);
 
+   // $s=explode("/", $path);
+    $path = Storage::disk('s3')->put('files', $request->file('files'),'public');
     File::create([
-            'name'=>$s[1],
+            'name'=>$path,
           'ID_User'=> Auth::user()->id
      ]);
-     // $path = Storage::disk('s3')->put('images', $request->image);
-     //   $path = Storage::disk('s3')->url($path);
-     
-    // $path = Storage::disk('s3')->put('files', $request->file('files'));
-    // $url = Storage::url($path);
-    // dd( $url);
+  
 
     return redirect()->route('subir.index');
     }
