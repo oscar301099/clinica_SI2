@@ -17,17 +17,30 @@
    {{-- $cita->Fecha_cita=$request->input('Fecha_cita');
         $cita->Hora_cita=$request->input('Hora_cita');
         $cita->Id_cliente=$request->input('Id_cliente'); 
-        $cita->Id_medico=$request->input('Id_medico');  --}}
+        $cita->Id_medico=$request->input('Id_medico');  
+        
+        
+        <div class="row">
+                    <div class="col-md-6">
+                        <label for="fecha">Ingresar Fecha</label>
+                        <input type="date" name="fecha" class="form-control" value="" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="hora">Ingresar Hora</label>
+                        <input type="time" name="hora" class="form-control" value="" required>
+                    </div>
+                </div
+        --}}
         @enderror
             <form action="{{route('cita.store')}}" method="post" >
                 @csrf
-                <div class="form-row">
+                <div class="row">
                      <div class="form-group col-md-6">
                       
                         <label for="Fecha_cita">ingresar fecha de la cita</label>
-                        <input type="text" name="Fecha_cita" class="form-control"   id="Fecha_cita" required>
+                        <input type="date" name="Fecha_cita" class="form-control" id="Fecha_cita"required>
                         <label for="Hora_cita">ingresar Hora de la cita </label>
-                        <input type="text" name="Hora_cita" class="form-control"  id="Hora_cita" required>
+                        <input type="time" name="Hora_cita" class="form-control"  id="Hora_cita" required>
                         <label for="Id_cliente">ingresar Id del cliente</label>
                         <input type="text" name="Id_cliente" class="form-control"   id="Id_cliente" required>
                         <label for="Id_medico">ingresar ID Medico </label>

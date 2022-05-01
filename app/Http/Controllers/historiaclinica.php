@@ -20,11 +20,9 @@ class historiaclinica extends Controller
      */
     public function index()
     {
-        //
-            
+        //x 
          $historiaclinicas= historialclinico::where('Id_cliente',Auth::user()->id)->orWhere('Id_medico',Auth::user()->id)->get();
-        return view('historialclinica.index',compact('historiaclinicas'));
-        
+        return view('historialclinica.index',compact('historiaclinicas'));  
     }
 
     /**
@@ -141,7 +139,7 @@ class historiaclinica extends Controller
         $bitacora=new Bitacora();
         $bitacora->ID_User=Auth::user()->id;
         $bitacora->Accion=('elimino historial');
-        
+        $bitacora->save();
         return redirect()->route('historiaclinica.index');
     }
 }

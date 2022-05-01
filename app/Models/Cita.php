@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Cita extends Model
 {
     use HasFactory;
-    protected $table='Cita'; //usa el nombre de la base de datos 
-    protected $fillable = ['id','Fecha_cita','Hora_cita','Id_cliente','Id_medico' ];
+    protected $table='cita'; //usa el nombre de la base de datos 
+    protected $fillable = ['Fecha_cita','Hora_cita','Id_cliente','Id_medico' ];
 }

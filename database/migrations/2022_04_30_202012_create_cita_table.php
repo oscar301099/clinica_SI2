@@ -15,8 +15,8 @@ class CreateCitaTable extends Migration
     {
         Schema::create('cita', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('Fecha_cita');
-            $table->dateTime('Hora_cita');
+            $table->date('Fecha_cita');
+            $table->time('Hora_cita');
             $table->unsignedBigInteger('Id_cliente');
             $table->foreign('Id_cliente')->references('id')->on ('users'); 
             $table->unsignedBigInteger('Id_medico');

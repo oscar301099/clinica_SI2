@@ -284,6 +284,11 @@ return [
             'route'  => 'subir.index',
             'icon' => 'fas fa-fw fa-lock',
              
+         ],[
+            'text' => 'cita Medica',
+            'route'  => 'cita.index',
+            'icon' => 'fas fa-fw fa-lock',
+             
          ],
         [
             'text'    => 'multilevel',

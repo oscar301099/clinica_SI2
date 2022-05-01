@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BitacoraController;
+use App\Http\Controllers\CitaController;
 use App\Http\Controllers\historiaclinica;
 use App\Http\Controllers\MedicoController;
 use Illuminate\Support\Facades\Route;
@@ -33,5 +34,6 @@ Route::resource('subir', FilesController::class)->names('subir');
 Route::resource('bitacora',BitacoraController::class)->names('bitacora');
 Route::post('login', [UserController::class,'login']);
 Route::resource('medico', MedicoController::class)->names('medico');
+Route::resource('cita', CitaController::class)->names('cita');
 
 

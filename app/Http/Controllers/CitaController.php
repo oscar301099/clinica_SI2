@@ -16,7 +16,7 @@ class CitaController extends Controller
     public function index()
     {
         //
-        $cita= Cita::where('Id_cliente',Auth::user()->id )->orWhere('Id_medico',Auth::user()->id )->get();
+        $cita = Cita::all();
         return view('cita.index',compact('cita'));
     }
 
@@ -45,6 +45,7 @@ class CitaController extends Controller
         $cita->Id_cliente=$request->input('Id_cliente'); 
         $cita->Id_medico=$request->input('Id_medico'); 
         $cita->save();
+        return redirect()->route('cita.index');
     }
 
     /**
@@ -84,7 +85,10 @@ class CitaController extends Controller
         $cita=Cita::findOrFail($id);
         $cita->Fecha_cita=$request->input('Fecha_cita');
         $cita->Hora_cita=$request->input('Hora_cita');
+        $cita->Id_cliente=$request->input('Id_cliente');
+        $cita->Id_medico=$request->input('Id_medico'); 
         $cita->save();
+        return redirect()->route('cita.index');
     }
 
     /**
@@ -98,5 +102,6 @@ class CitaController extends Controller
         //
         $cita=Cita::findOrFail($id);
         $cita->delete();
+        return redirect()->route('cita.index');
     }
 }

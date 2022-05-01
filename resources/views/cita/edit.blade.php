@@ -9,14 +9,7 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-                         {{--  <label   for="Fecha_cita">ingresar fecha de la cita</label>
-                        <input type="text" name="Fecha_cita" class="form-control"   id="Fecha_cita" required>
-                        <label for="Hora_cita">ingresar Hora de la cita </label>
-                        <input type="text" name="Hora_cita" class="form-control"  id="Hora_cita" required>
-                        <label for="Id_cliente">ingresar Id del cliente</label>
-                        <input type="text" name="Id_cliente" class="form-control"   id="Id_cliente" required>
-                        <label for="Id_medico">ingresar ID Medico </label>
-                        <input type="text" name="Id_medico" class="form-control"   id="Id_medico" required> --}}
+                          
             <form action="{{route('cita.update', $cita)}}" method="post"  >
                 @csrf
                 @method('put')
