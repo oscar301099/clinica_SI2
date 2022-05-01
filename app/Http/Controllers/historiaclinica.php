@@ -22,7 +22,7 @@ class historiaclinica extends Controller
     {
         //
         
-        $historiaclinicas= historialclinico::where('Id_cliente',Auth::user()->id )->orWhere('Id_medico',Auth::user()->id )->get();
+        $historiaclinicas= historialclinico::where('Id_cliente',Auth::user()->id)->orWhere('Id_medico',Auth::user()->id)->get();
         return view('historialclinica.index',compact('historiaclinicas'));
         
     }
