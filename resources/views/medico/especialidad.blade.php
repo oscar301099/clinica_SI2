@@ -10,7 +10,7 @@
 <div class="card">
     <div class="card-body">
        
-            <form action="{{ url('medicos/esp_store') }}" method="post" >
+            <form action="{{ url('medico/esp_store') }}" method="post" >
                 @csrf
                 <div class="form-row">
                      <div class="form-group col-md-6">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <button  class="btn btn-primary" type="submit" value="required">Añadir</button>
-                    <a class="btn btn-danger" href="{{route('medicos.index')}}">Volver</a>
+                    <a class="btn btn-danger" href="{{route('medico.index')}}">Volver</a>
                 </div>
                 
             </form>

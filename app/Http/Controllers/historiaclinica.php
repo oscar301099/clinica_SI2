@@ -20,8 +20,8 @@ class historiaclinica extends Controller
     {
         //
         
-        $historiaclinicas= historialclinico::where('Id_cliente',Auth::user()->id )->orWhere('Id_cliente',Auth::user()->id )->get();
-        return view('historialclinica.index',compact('historiaclinicas',$historiaclinicas));
+        $historiaclinicas= historialclinico::where('Id_cliente',Auth::user()->id )->orWhere('Id_medico',Auth::user()->id )->get();
+        return view('historialclinica.index',compact('historiaclinicas'));
         
     }
 
@@ -45,7 +45,6 @@ class historiaclinica extends Controller
      */
     public function store(Request $request)
     {
-        //
         $historiaclinica=new historialclinico();
         $historiaclinica->actividad=$request->input('actividad');
         $historiaclinica->alergias=$request->input('alergias');

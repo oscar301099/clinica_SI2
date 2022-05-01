@@ -138,7 +138,7 @@ class MedicoController extends Controller
     public function especialidad($id)
     {
         $medico= Medico::findOrFail($id);
-        return view('medicos.especialidad',compact('medico'));
+        return view('medico.especialidad',compact('medico'));
     }
     public function esp_store(Request $request)
     {
@@ -146,8 +146,6 @@ class MedicoController extends Controller
        $especialidades->descripcion = $request->input('descripcion');
        $especialidades->id_medico = $request->input('id_medico');
        $especialidades->save();
-
-       return redirect()->route('medicos.index');
-        
+       return redirect()->route('medico.index');
     }
 }

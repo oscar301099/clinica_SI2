@@ -26,16 +26,13 @@
                         <th scope="col">medicamentos</th>
                                        </tr>
                 </thead>
-    
                 <tbody>
-                  
                     @foreach ($historiaclinicas as $historiaclinica)
                     {{-- Id_cliente','Id_medico' ||$historiaclinica->Id_medico==auth()->user()->id
                     {{auth()->user()->id]]}}
                     --}}
                         <tr>
                             {{-- //<div>auth()->user()->id==1</div> --}}
-                     
                             <td>{{$historiaclinica->id}}</td>
                             <td>{{$historiaclinica->actividad}}</td>  
                             <td>{{$historiaclinica->alergias}}</td>      
@@ -44,35 +41,22 @@
                             <td>{{$historiaclinica->enfermedad}}</td>  
                             <td>{{$historiaclinica->medicamentos}}</td>                        
                             <td >
-                            
                                 <form action="{{url('/historiaclinica/'.$historiaclinica->id)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    
                                     <a href="{{route('historiaclinica.edit', $historiaclinica->id)}}"  class="btn btn-primary btn-sm">Editar</a>
-                                   
-                                   
                                     <div style="padding-top: 0.50rem"></div>
                                     <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" value="Borrar">Eliminar</button>                                    
-                                   
-                                    
                                 </form>
-                            
                             </td>
-                         
-                            
                             
                         </tr>
-                    @endforeach
-                   
-                   
+                    @endforeach  
                 </tbody>
             </table>
         </div>
     </div>
-    
 @stop
-
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">

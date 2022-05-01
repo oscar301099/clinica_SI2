@@ -17,8 +17,9 @@ class UserController extends Controller
      */
     public function login(Request $request)
     {
-        // dd(User::find(1));
+        
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            // dd(json_decode(json_encode(Auth::user()->id)));
             $request->session()->regenerate();
 
             return redirect()->intended('home');
@@ -146,6 +147,9 @@ class UserController extends Controller
         }
         $usuario->save();
         $usuario->roles()->sync($request->roles);
+
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     /**

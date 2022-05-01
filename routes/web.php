@@ -22,19 +22,18 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('auth/login');
-});
+}); 
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('roles', roleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
-Route::resource('medico', MedicoController::class)->names('medico');
-Route::get('medicos/especialidad/{id}', [MedicoController::class,'especialidad']);
-Route::post('medicos/esp_store', [MedicoController::class,'esp_store']);
+Route::get('medico/especialidad/{id}', [MedicoController::class,'especialidad']);
+Route::post('medico/esp_store', [MedicoController::class,'esp_store']);
 Route::resource('historiaclinica', historiaclinica::class)->names('historiaclinica');
 Route::resource('subir', FilesController::class)->names('subir');
 Route::resource('bitacora',BitacoraController::class)->names('bitacora');
 Route::post('login', [UserController::class,'login']);
+Route::resource('medico', MedicoController::class)->names('medico');
 
 
