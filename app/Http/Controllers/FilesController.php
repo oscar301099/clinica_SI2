@@ -46,7 +46,6 @@ class FilesController extends Controller
 
     public function store(Request $request )
     {
-
    // $s=explode("/", $path);
     $path = Storage::disk('s3')->put('files', $request->file('files'),'public');
     File::create([
