@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\file;
+use App\Models\Cita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use App\Models\Bitacora ;
-use App\Models\User;
 
-
-
-class FilesController extends Controller
+class CitaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,9 +16,8 @@ class FilesController extends Controller
     public function index()
     {
         //
-       
-        $files=File::all();
-        return view('subir.index',compact('files'));
+        $cita= Cita::where('Id_cliente',Auth::user()->id )->orWhere('Id_medico',Auth::user()->id )->get();
+        return view('cita.index',compact('cita'));
     }
 
     /**
@@ -35,6 +28,7 @@ class FilesController extends Controller
     public function create()
     {
         //
+        return view('cita.create');
     }
 
     /**
@@ -43,33 +37,16 @@ class FilesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-    public function store(Request $request )
+    public function store(Request $request)
     {
-      
-   $path = $request->file('files')->store('public');
-    $fileName = "miarchivo.pdf";  
-   // dd($path);
-    $url = Storage::url($path);
-   // dd($path);
-    $s=explode("/", $path);
-    
-    $s[1];
-   // dd($s);
-
-    File::create([
-            'name'=>$s[1],
-          'ID_User'=> Auth::user()->id
-     ]);
-     // $path = Storage::disk('s3')->put('images', $request->image);
-     //   $path = Storage::disk('s3')->url($path);
-     
-    // $path = Storage::disk('s3')->put('files', $request->file('files'));
-    // $url = Storage::url($path);
-    // dd( $url);
-
-    return redirect()->route('subir.index');
+        $cita=new Cita();
+        $cita->Fecha_cita=$request->input('Fecha_cita');
+        $cita->Hora_cita=$request->input('Hora_cita');
+        $cita->Id_cliente=$request->input('Id_cliente'); 
+        $cita->Id_medico=$request->input('Id_medico'); 
+        $cita->save();
     }
+
     /**
      * Display the specified resource.
      *
@@ -90,6 +67,8 @@ class FilesController extends Controller
     public function edit($id)
     {
         //
+        $cita=Cita::findOrFail($id);
+        return view('cita.edit',['cita'=>$cita]);
     }
 
     /**
@@ -102,7 +81,10 @@ class FilesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        dd('Upload');
+        $cita=Cita::findOrFail($id);
+        $cita->Fecha_cita=$request->input('Fecha_cita');
+        $cita->Hora_cita=$request->input('Hora_cita');
+        $cita->save();
     }
 
     /**
@@ -114,15 +96,7 @@ class FilesController extends Controller
     public function destroy($id)
     {
         //
+        $cita=Cita::findOrFail($id);
+        $cita->delete();
     }
-    public function subirArchivo(Request $request)
- {
-        //Recibimos el archivo y lo guardamos en la carpeta storage/app/public
-        $request->file('archivo')->store('public');
-       // dd("subido y guardado");
-        
- }
-
-    
-  
 }
