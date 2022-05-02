@@ -280,13 +280,8 @@ return [
            'can' =>'Rol Admin',
              
          ],
+        
         [
-            'text' => 'subir archivo',
-            'route'  => 'subir.index',
-            'icon' => 'fas fa-fw fa-lock',
-          'can' =>'Rol Admin',
-             
-         ],[
             'text' => 'cita Medica',
             'route'  => 'cita.index',
             'icon' => 'fas fa-fw fa-lock',
