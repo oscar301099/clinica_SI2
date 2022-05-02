@@ -130,8 +130,8 @@ class MedicoController extends Controller
         $especialidades=especialidad::where('id_medico',$medico->id);
         $especialidades->delete();
         $medico->delete();
-        $user = User::where('cod_p', $medico->id);
-        $user->delete();
+      //  $user = User::where('id', $medico->id);
+     //   $user->delete();
 
         return redirect()->route('medico.index');
     }
