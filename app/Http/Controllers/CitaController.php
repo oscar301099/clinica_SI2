@@ -16,7 +16,7 @@ class CitaController extends Controller
     public function index()
     {
         //
-        $cita = Cita::where('Id_cliente',Auth::user()->id)->orWhere('Id_medico',Auth::user()->id)->get();
+        $cita = Cita::all();
         return view('cita.index',compact('cita'));
     }
 
