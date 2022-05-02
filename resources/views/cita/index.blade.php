@@ -23,6 +23,7 @@
                         <th scope="col">hora de la cita</th>
                         <th scope="col">Id del cliente</th>
                         <th scope="col">Id del medico</th>
+                      
                                        </tr>
                 </thead>
                 <tbody>
@@ -48,7 +49,10 @@
                                     <div style="padding-top: 0.50rem"></div>
                                     @can('Rol Admin')
                                     <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" value="Borrar">Eliminar</button>  
-                                    @endcan                                  
+                                    @endcan     
+                                    @can('Rol medico')
+                                    <a href="{{route('historiaclinica.create')}}" class="btn btn-secondary btb-sm">Crear historia clinica</a>  
+                                    @endcan                           
                                 </form>
                             </td>
                             

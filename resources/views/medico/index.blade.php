@@ -48,14 +48,15 @@
                         </td>
     
                         <td>
-                            
+                            @can('Rol Admin')
                             <a href="{{ url('medico/especialidad', $medico->id) }}" style="margin-top: 0.35rem" class="fas fa-pencil-alt"><i class="fas fa-plus-square"></i> Especialidad</a>
+                            @endcan
                                 @can('Rol Admin')
                                 <a class="btn btn-primary btn-sm" style="margin-top: 5px" href="{{route('medico.edit',$medico)}}"><i class="fas fa-pencil-alt"></i>  Editar</a>  
                                 @endcan
-            
+                                @can('Rol cliente')
                                 <a class="btn btn-primary btn-sm" style="margin-top: 5px" href="{{route('cita.create')}}"><i class="fas fa-pencil-alt"></i>  solicitar</a>
-                              
+                                @endcan
                               
                             
                             
