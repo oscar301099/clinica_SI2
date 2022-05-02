@@ -9,5 +9,5 @@ class file extends Model
 {
     use HasFactory;
     protected $table='files'; //usa el nombre de la base de datos 
-    protected $fillable = ['name','ID_User'];
+    protected $fillable = ['name','id_historialclinico'];
 }

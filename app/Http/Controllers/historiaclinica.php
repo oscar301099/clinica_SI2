@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Bitacora;
 use App\Models\Medico;
 use App\Models\User;
+use App\Models\file;
 use App\Models\historialclinico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use App\Models\file;
 
 class historiaclinica extends Controller
 {
@@ -20,9 +20,22 @@ class historiaclinica extends Controller
      */
     public function index()
     {
-        //x 
-         $historiaclinicas= historialclinico::where('Id_cliente',Auth::user()->id)->orWhere('Id_medico',Auth::user()->id)->get();
-        return view('historialclinica.index',compact('historiaclinicas'));  
+        //x
+        // dd(json_decode(json_encode($files)));
+        $historiaclinicas= historialclinico::join('files', 'files.id_historialclinico', 'historialclinico.id')
+        ->select('historialclinico.*', 'files.name as nombre')   
+        ->where('Id_cliente',Auth::user()->id)->orWhere('Id_medico',Auth::user()->id)->get();
+        // dd(json_decode(json_encode($historiaclinicas)));
+        // $historiaclinicas->map(function ($item, $key) {
+        //     // dd(json_decode(json_encode($item)));
+        //     $path=explode('files/',$item->nombre);
+        //     $path=$path[1];
+        //     $item->nombre =$path;
+        //     return $item;
+        // });
+        // dd(json_decode(json_encode($historiaclinicas)));
+        return view('historialclinica.index',compact('historiaclinicas'));
+       
     }
 
     /**
@@ -45,11 +58,7 @@ class historiaclinica extends Controller
      */
     public function store(Request $request)
     {
-        $path = Storage::disk('s3')->put('files', $request->file('files'),'public');
-        File::create([
-                'name'=>$path,
-              'ID_User'=> Auth::user()->id
-         ]);
+
         $historiaclinica=new historialclinico();
         $historiaclinica->actividad=$request->input('actividad');
         $historiaclinica->alergias=$request->input('alergias');
@@ -64,6 +73,13 @@ class historiaclinica extends Controller
         $bitacora->ID_User=Auth::user()->id;
         $bitacora->Accion=('creo historia');
         $bitacora->save();
+
+        $path = Storage::disk('s3')->put('files', $request->file('files'),'public');
+        
+        File::create([
+                'name'=>$path,
+              'id_historialclinico'=> $historiaclinica->id
+        ]);
         return redirect()->route('historiaclinica.index');
     }
 

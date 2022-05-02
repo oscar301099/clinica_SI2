@@ -22,8 +22,8 @@ class FilesController extends Controller
     public function index()
     {
         //
-       
-        $files=File::all();
+
+        $files=File::where('Id_User',Auth::user()->id)->get();
         return view('subir.index',compact('files'));
     }
 

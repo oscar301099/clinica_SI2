@@ -44,22 +44,24 @@
                             <td>{{$historiaclinica->Fecha_ingreso}}</td>   
                             <td>{{$historiaclinica->Fecha_salida}}</td>  
                             <td>{{$historiaclinica->enfermedad}}</td>  
-                            <td>{{$historiaclinica->medicamentos}}</td>                        
+                            <td>{{$historiaclinica->medicamentos}}</td> 
+                    
                             <td >
                                 <form action="{{url('/historiaclinica/'.$historiaclinica->id)}}" method="post">
                                     @csrf
                                     @method('delete')
+                                     <a class="btn btn-secondary btn-sm" href="{{Storage::disk('s3')->url($historiaclinica->nombre)}}" download="a.jpg" target="_blank">archivo</a>
                                     <a href="{{route('historiaclinica.edit', $historiaclinica->id)}}"  class="btn btn-primary btn-sm">Editar</a>
                                     <div style="padding-top: 0.50rem"></div>
                                     <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" value="Borrar">Eliminar</button>                                    
                                 </form>
                             </td>
-                            
+                            {{-- <img src="{{Storage::disk('s3')->url('files/tfg8xYHFxo6NBvCw74yGdeEzb9yU1d2ZtmjKSvP4.png')}}" alt=""> --}}
                         </tr>
                     @endforeach  
                 </tbody>
             </table>
-        </div>
+        </div>  
     </div>
 @stop
 @section('css')

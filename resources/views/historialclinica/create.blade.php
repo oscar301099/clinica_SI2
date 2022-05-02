@@ -41,14 +41,7 @@
                             <label for="archivo"><b>Archivo: </b></label><br>
                             <input type="file" name="files" required>
                        
-                    </div>
-
-                   
-
-                    
-                
-           
-                    
+                    </div>     
                 </div>
                 <div class="form-group">
                     <button  class="btn btn-primary" type="submit" value="required">Añadir historia clinica</button>

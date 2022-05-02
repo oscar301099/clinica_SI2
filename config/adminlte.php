@@ -253,13 +253,13 @@ return [
             'text' => 'Roles',
             'route'  => 'roles.index',
             'icon' => 'fas fa-fw fa-lock',
-            //'can' =>'Rol Admin',
+            'can' =>'Rol Admin',
         ],
         [
             'text' => 'usuarios',
             'route'  => 'users.index',
             'icon' => 'fas fa-fw fa-lock',
-           // 'can' =>'Rol Admin',
+            'can' =>'Rol Admin',
         ],
         [
             'text' => 'medico',
@@ -277,14 +277,14 @@ return [
             'text' => 'bitacora',
              'route'  => 'bitacora.index',
             'icon' => 'fas fa-fw fa-lock',
-           // 'can' =>'Rol Admin',
+           'can' =>'Rol Admin',
              
          ],
         [
             'text' => 'subir archivo',
             'route'  => 'subir.index',
             'icon' => 'fas fa-fw fa-lock',
-          //  'can' =>'Rol Admin',
+          'can' =>'Rol Admin',
              
          ],[
             'text' => 'cita Medica',
