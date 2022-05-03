@@ -10,10 +10,9 @@
     <div class="card">
         @can('Rol cliente')
         <div class="card-header">
-           
-            <a href="{{route('historiaclinica.create')}}" class="btn btn-secondary btb-sm">Crear historia clinica</a> 
-           
-            
+            @can('Rol medico')
+           <a href="{{route('historiaclinica.create')}}" class="btn btn-secondary btb-sm">Crear historia clinica</a> 
+           @endcan  
         </div>
         @endcan
     </div>
