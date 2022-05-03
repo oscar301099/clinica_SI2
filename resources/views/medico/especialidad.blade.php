@@ -15,9 +15,9 @@
                 <div class="form-row">
                      <div class="form-group col-md-6">
 
-
+                        <label for="descripcion">Ingresar Especialidad</label>    
                         <input type="text" name="id_medico" class="form-control"  value="{{$medico->id}}"  hidden >
-                        <label for="descripcion">Ingresar Especialidad</label>
+                        
                         <input type="text" name="descripcion" class="form-control"  value=""  required>
 
                         

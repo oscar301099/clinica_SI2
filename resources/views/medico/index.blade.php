@@ -41,7 +41,7 @@
     
                         <td>
                         @foreach ($especialidades as $especialidad)
-                            @if ($medico->id = $especialidad->id_medico)
+                            @if ($medico->id == $especialidad->id_medico)
                            *{{$especialidad->descripcion}} <br>
                             @endif
                         @endforeach
