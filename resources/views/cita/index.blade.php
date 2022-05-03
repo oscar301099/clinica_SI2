@@ -9,8 +9,10 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-
-            <a href="{{route('cita.create')}}" class="btn btn-secondary btb-sm">Crear cita clinica</a>
+               @can('Rol cliente')
+               <a href="{{route('cita.create')}}" class="btn btn-secondary btb-sm">Crear cita clinica</a>   
+               @endcan 
+            
         </div>
     </div>
     <div class="card">
