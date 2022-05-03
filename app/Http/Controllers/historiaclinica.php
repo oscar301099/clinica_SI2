@@ -23,8 +23,8 @@ class historiaclinica extends Controller
         //x
         // dd(json_decode(json_encode($files)));
         $historiaclinicas= historialclinico::join('files', 'files.id_historialclinico', 'historialclinico.id')
-        ->select('historialclinico.*', 'files.name as nombre')   ;
-     //   ->where('Id_cliente',Auth::user()->id)->orWhere('Id_medico',Auth::user()->id)->get();
+        ->select('historialclinico.*', 'files.name as nombre') ;  
+        //->where('Id_cliente',Auth::user()->id)->orWhere('Id_medico',Auth::user()->id)->get();
         // dd(json_decode(json_encode($historiaclinicas)));
         // $historiaclinicas->map(function ($item, $key) {
         //     // dd(json_decode(json_encode($item)));

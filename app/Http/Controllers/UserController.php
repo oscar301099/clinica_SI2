@@ -76,11 +76,7 @@ class UserController extends Controller
 
         $usuario->roles()->sync($request->roles);
         
-        /* if($request->mecanicos > 0){
-            $mecanicos = Mecanico::findOrFail($request->mecanico);
-            $mecanicos->user_id = $usuario->id;
-            $mecanicos->save();
-        } */
+        
             return view('users.index');
             
     }
