@@ -16,6 +16,13 @@ class UserSeeder extends Seeder
     {
         //
         $user=new User() ;
+        $user->name='medico';
+        $user->email='medico@gmail.com';
+        $user->password=bcrypt('12345678');//bcrypt encripta la contraseña 
+        $user->assignRole('Medico');
+        $user->save();//save con  parentesis
+        //save con  parentesis
+        $user=new User() ;
         $user->name='admin';
         $user->email='admin@gmail.com';
         $user->password=bcrypt('12345678');
@@ -30,12 +37,6 @@ class UserSeeder extends Seeder
         $user->save();//save con  parentesis
         
         //
-        $user=new User() ;
-        $user->name='medico';
-        $user->email='medico@gmail.com';
-        $user->password=bcrypt('12345678');//bcrypt encripta la contraseña 
-        $user->assignRole('Medico');
-        $user->save();//save con  parentesis
-        //save con  parentesis
+       
     }
 }
